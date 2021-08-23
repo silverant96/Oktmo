@@ -26,11 +26,32 @@ public class OktmoAnalyzer {
     public static ArrayList<Place> findPlacesByFirstAndLastEqualsChar (ArrayList<Place> inputPlaces) {
         ArrayList<Place> foundPlaces = new ArrayList<>();
         for (int i = 1040; i < 1072; i++) {
-            foundPlaces.addAll(searchWordByRegex(inputPlaces,
-                    "^" + (char)i + "\\W+" + (char)(i + 32) + "$", 0, true));
-            if (i == 1045) {
-                foundPlaces.addAll(searchWordByRegex(inputPlaces,
-                        "^" + (char)1025 + "\\W+" + (char)1105 + "$", 0, true));
+            switch (i) {
+                case 1041:
+                case 1042:
+                case 1043:
+                case 1044:
+                case 1046:
+                case 1047:
+                case 1050:
+                case 1051:
+                case 1052:
+                case 1053:
+                case 1055:
+                case 1056:
+                case 1057:
+                case 1058:
+                case 1060:
+                case 1061:
+                case 1062:
+                case 1063:
+                case 1064:
+                case 1065:
+                    foundPlaces.addAll(searchWordByRegex(inputPlaces,
+                            "^" + (char)i + "\\W\\S+" + (char)(i + 32) + "$", 0, true));
+                    break;
+                default:
+                    break;
             }
         }
         return foundPlaces;
