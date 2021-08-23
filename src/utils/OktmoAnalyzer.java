@@ -49,6 +49,7 @@ public class OktmoAnalyzer {
                 case 1065:
                     foundPlaces.addAll(searchWordByRegex(inputPlaces,
                             "^" + (char)i + "\\W\\S+" + (char)(i + 32) + "$", 0, true));
+                    // "([А-Яа-яЁё])\1"
                     break;
                 default:
                     break;

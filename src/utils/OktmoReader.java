@@ -140,22 +140,22 @@ public class OktmoReader {
                 Matcher matcherLongNumber = patternLongNumber.matcher(s);
                 long code = 0L;
                 if (matcherLongNumber.find()) {
-                    code = Long.parseLong(RemoveUnnecessaryChar(matcherLongNumber.group()));
+                    code = Long.parseLong(removeUnnecessaryChar(matcherLongNumber.group()));
                 }
 
                 // Parsing name
                 String name;
                 Matcher matcherName = patternName.matcher(s);
                 if (matcherName.find()) {
-                    name = RemoveFirstAndLastQuotes(matcherName.group());
+                    name = removeFirstAndLastQuotes(matcherName.group());
                 } else {
                     Matcher matcherName2 = patternName2.matcher(s);
                     if (matcherName2.find()) {
-                        name = RemoveFirstAndLastQuotes(matcherName2.group());
+                        name = removeFirstAndLastQuotes(matcherName2.group());
                     } else {
                         Matcher matcherAllNames = Pattern.compile("[А-Яа-яЁё\\s]+").matcher(s);
                         if (matcherAllNames.find()) {
-                            name = RemoveFirstAndLastQuotes(matcherAllNames.group());
+                            name = removeFirstAndLastQuotes(matcherAllNames.group());
                         } else {
                             name = "";
                         }
@@ -195,7 +195,7 @@ public class OktmoReader {
      * @param inputString
      * @return
      */
-    private static String RemoveUnnecessaryChar(String inputString) {
+    private static String removeUnnecessaryChar(String inputString) {
         return inputString.replace("\"", "").replace(";", "");
     }
 
@@ -204,7 +204,7 @@ public class OktmoReader {
      * @param inputString
      * @return
      */
-    private static String RemoveFirstAndLastQuotes(String inputString) {
+    private static String removeFirstAndLastQuotes(String inputString) {
         inputString = inputString.replace(";", "");
         return inputString.substring(1, inputString.length() - 1);
     }
@@ -215,7 +215,7 @@ public class OktmoReader {
      * @param inputString
      * @return
      */
-    private static String ReturnLastStringFromTwoNames(String inputString) {
+    private static String returnLastStringFromTwoNames(String inputString) {
         return inputString.substring(inputString.indexOf(";") + 2, inputString.length() - 1);
     }
 }
