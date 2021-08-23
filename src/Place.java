@@ -1,4 +1,5 @@
 import java.util.Locale;
+import java.util.Objects;
 
 /**
  * Place - населенный пункт
@@ -161,5 +162,21 @@ public class Place implements Comparable<Place> {
             }
         }
         return 0;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+        if (!(o instanceof Place)) {
+            return false;
+        }
+
+        Place place = (Place) o;
+
+        return ((Objects.equals(this.status, place.status)) &&
+                Objects.equals(this.name, place.status) &&
+                (this.code == place.code));
     }
 }
