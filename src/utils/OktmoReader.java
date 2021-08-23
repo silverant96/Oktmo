@@ -1,3 +1,8 @@
+package utils;
+
+import database.OktmoData;
+import models.Place;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -6,7 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * 2.2.	OktmoReader считывает текстовые файлы .txt и добавляет их содержимое в разобранном виде в OktmoData
+ * 2.2.	utils.OktmoReader считывает текстовые файлы .txt и добавляет их содержимое в разобранном виде в database.OktmoData
  */
 public class OktmoReader {
 
@@ -83,7 +88,7 @@ public class OktmoReader {
                     System.out.println("Это не попадёт в базу (не соответствие формату):\nНомер позиции: "
                             + lineCount + "\nТекст: " + s + "\n");
                 } else {
-                    // Add to OktmoData object Place;
+                    // Add to database.OktmoData object models.Place;
                     convertStringForName.delete(convertStringForName.length() - 1, convertStringForName.length());
                     data.addPlace(new Place(code, convertStringForName.toString(), convertStringForStatus.toString()));
                 }
@@ -104,7 +109,7 @@ public class OktmoReader {
      * Чтение из файла БД НП с помощью регулярных выражений
      * @param fileName имя файла, с которым мы будем работать
      * @param data объект в который мы будем складывать то, что прочитали
-     * @return объект типа OktmoData
+     * @return объект типа database.OktmoData
      */
     public static OktmoData readPlaces(String fileName, OktmoData data) {
         int lineCount = 0;

@@ -1,3 +1,7 @@
+package database;
+
+import models.Place;
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
@@ -6,19 +10,43 @@ import java.util.Collections;
 import java.util.TreeSet;
 
 /**
- * OktmoData будет хранить всю считанную информацию (списки) и содержать методы обращения к ним
+ * database.OktmoData будет хранить всю считанную информацию (списки) и содержать методы обращения к ним
  */
 public class OktmoData {
-    ArrayList<Place> places = new ArrayList<>();
-    TreeSet<String> allStatuses = new TreeSet<>();
-    ArrayList<Place> sortedPlaces = new ArrayList<>();
+    private ArrayList<Place> places = new ArrayList<>();
+    private TreeSet<String> allStatuses = new TreeSet<>();
+    private ArrayList<Place> sortedPlaces = new ArrayList<>();
 
     public OktmoData() {
     }
 
+    public ArrayList<Place> getPlaces() {
+        return places;
+    }
+
+    public void setPlaces(ArrayList<Place> places) {
+        this.places = places;
+    }
+
+    public TreeSet<String> getAllStatuses() {
+        return allStatuses;
+    }
+
+    public void setAllStatuses(TreeSet<String> allStatuses) {
+        this.allStatuses = allStatuses;
+    }
+
+    public ArrayList<Place> getSortedPlaces() {
+        return sortedPlaces;
+    }
+
+    public void setSortedPlaces(ArrayList<Place> sortedPlaces) {
+        this.sortedPlaces = sortedPlaces;
+    }
+
     public void addPlace(Place place) {
         places.add(place);
-        allStatuses.add(place.status);
+        allStatuses.add(place.getStatus());
     }
 
     public void printAllStatuses() {
@@ -56,7 +84,7 @@ public class OktmoData {
 
     @Override
     public String toString() {
-        return "OktmoData {" +
+        return "database.OktmoData {" +
                 "places=\n " + places +
                 '}';
     }

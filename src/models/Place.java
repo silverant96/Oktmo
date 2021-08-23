@@ -1,16 +1,18 @@
+package models;
+
 import java.util.Locale;
 import java.util.Objects;
 
 /**
- * Place - населенный пункт
+ * models.Place - населенный пункт
  * code - код населенного пункта
  * name - наименование населенного пункта
  * status - тип населенного пункта
  */
 public class Place implements Comparable<Place> {
-    long code;
-    String name;
-    String status;
+    private long code;
+    private String name;
+    private String status;
 
     public Place(long code, String name, String status) {
         this.code = code;
@@ -135,9 +137,33 @@ public class Place implements Comparable<Place> {
         this.status = "Неизвестный тип";
     }
 
+    public long getCode() {
+        return code;
+    }
+
+    public void setCode(long code) {
+        this.code = code;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
-        return "Place{" +
+        return "models.Place{" +
                 "code=" + code +
                 ", name='" + name + '\'' +
                 ", status='" + status + '\'' +

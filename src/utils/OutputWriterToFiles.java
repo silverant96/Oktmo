@@ -1,3 +1,7 @@
+package utils;
+
+import models.Place;
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
@@ -17,7 +21,7 @@ public class OutputWriterToFiles {
     public static void outputAllPlacesNamesToFile(ArrayList<Place> outputPlaces, String fileName) {
         try (PrintWriter out = new PrintWriter(new FileOutputStream(fileName))) {
             for (Place place : outputPlaces) {
-                out.println(place.name);
+                out.println(place.getName());
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -27,7 +31,7 @@ public class OutputWriterToFiles {
     public static void outputAllPlacesStatusToFile(ArrayList<Place> outputPlaces, String fileName) {
         try (PrintWriter out = new PrintWriter(new FileOutputStream(fileName))) {
             for (Place place : outputPlaces) {
-                out.println(place.status);
+                out.println(place.getStatus());
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();

@@ -1,25 +1,30 @@
+import database.OktmoData;
+import utils.OktmoAnalyzer;
+import utils.OktmoReader;
+import utils.OutputWriterToFiles;
+
 public class OktmoMain {
     public static void main(String[] args) {
         OktmoData data = new OktmoData();
 
-        //OktmoReader.readPlacesOldVersion("data-201710.csv", data);
+        //utils.OktmoReader.readPlacesOldVersion("data-201710.csv", data);
         OktmoReader.readPlaces("data-201710.csv", data);
 
 
         data.sortPlacesByName();
 
-        OktmoAnalyzer.removeUnknownStatusPlaces(data.places);
+        OktmoAnalyzer.removeUnknownStatusPlaces(data.getPlaces());
 
         data.outputToFileAllStatuses();
         data.outputToFileSortedPlacesByName();
 
-        OutputWriterToFiles.outputAllPlacesNamesToFile(OktmoAnalyzer.findPlacesSixOVO(data.places),
+        OutputWriterToFiles.outputAllPlacesNamesToFile(OktmoAnalyzer.findPlacesSixOVO(data.getPlaces()),
                 "findPlacesSixOVO.txt");
-        OutputWriterToFiles.outputAllPlacesNamesToFile(OktmoAnalyzer.findPlacesByFirstAndLastEqualsChar(data.places),
+        OutputWriterToFiles.outputAllPlacesNamesToFile(OktmoAnalyzer.findPlacesByFirstAndLastEqualsChar(data.getPlaces()),
                 "findPlacesByFirstAndLastEqualsChar.txt");
-        OutputWriterToFiles.outputAllPlacesStatusToFile(data.places,
+        OutputWriterToFiles.outputAllPlacesStatusToFile(data.getPlaces(),
                 "outputStatus.txt");
-        OutputWriterToFiles.outputAllPlacesToFile(data.places,
+        OutputWriterToFiles.outputAllPlacesToFile(data.getPlaces(),
                 "allplaces.txt");
 
     }

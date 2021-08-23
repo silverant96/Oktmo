@@ -1,9 +1,13 @@
+package utils;
+
+import models.Place;
+
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
 /**
- * 2.3.	OktmoAnalyzer просматривает объекты в OktmoData, и проводит анализ.
+ * 2.3.	utils.OktmoAnalyzer просматривает объекты в database.OktmoData, и проводит анализ.
  */
 public class OktmoAnalyzer {
 
@@ -33,7 +37,7 @@ public class OktmoAnalyzer {
     }
 
     public static ArrayList<Place> removeUnknownStatusPlaces (ArrayList<Place> inputPlaces) {
-        inputPlaces.removeIf(place -> Objects.equals(place.status, "Неизвестный тип"));
+        inputPlaces.removeIf(place -> Objects.equals(place.getStatus(), "Неизвестный тип"));
 
         return inputPlaces;
     }
@@ -59,11 +63,11 @@ public class OktmoAnalyzer {
 
         for (Place currentPlace : inputPlaces) {
             if (byLength == 0) {
-                if (pattern.matcher(currentPlace.name).find()) {
+                if (pattern.matcher(currentPlace.getName()).find()) {
                     foundPlaces.add(currentPlace);
                 }
             } else {
-                if (pattern.matcher(currentPlace.name).find() && currentPlace.name.length() < byLength) {
+                if (pattern.matcher(currentPlace.getName()).find() && currentPlace.getName().length() < byLength) {
                     foundPlaces.add(currentPlace);
                 }
             }
