@@ -16,7 +16,7 @@ public class OktmoAnalyzer {
      * С помощью регулярных выражений найдите все НП, название которых содержит меньше 6 букв и заканчиваются на -ово
      */
     public static ArrayList<Place> findPlacesSixOVO (ArrayList<Place> inputPlaces) {
-        return searchWordByRegex(inputPlaces, "[А-Яа-яЁё].+ово", 6, false);
+        return searchWordByRegex(inputPlaces, "^[А-Яа-яЁё]{1,2}ово$", 0, false);
     }
 
     /**
